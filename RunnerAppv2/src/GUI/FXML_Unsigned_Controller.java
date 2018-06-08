@@ -58,7 +58,7 @@ public class FXML_Unsigned_Controller implements Initializable {
         Scene scene = new Scene(root);                                                      //instance af den givne side
         stage.setScene(scene);                                                              //aktivere scenen
         stage.centerOnScreen();    
-        stage.setMaximized(true);//centreret billede
+        //stage.setMaximized(true);//centreret billede
         stage.setResizable(false);                                                          //ændre størrels på vindue false
         stage.show();                                                                       //hvis siden
 

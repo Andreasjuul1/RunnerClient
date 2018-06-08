@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package GUI;
 
 import java.io.IOException;
@@ -24,13 +29,13 @@ import javafx.scene.control.Alert;
  *
  * @author Andreas Juul Rasmussen
  */
-public class FXML_Signed_Controller implements Initializable {
+public class FXML_Signed_Finish_Controller implements Initializable {
 
     @FXML // fx:id="txtPassword"
-    private PasswordField txtCardNumber; 
+    private PasswordField txtCardNumber; // Value injected by FXMLLoader'
 
     @FXML // fx:id="btnAnnuler"
-    private Button btnCancel; 
+    private Button btnCancel; // Value injected by FXMLLoader
 
 
     @FXML
@@ -45,7 +50,7 @@ public class FXML_Signed_Controller implements Initializable {
         		String CardNumber = txtCardNumber.getText();
         				if(CardNumber.equals(null)){
 
-        					Alert alert = new Alert(Alert.AlertType.ERROR);                      
+        					Alert alert = new Alert(Alert.AlertType.ERROR);                             //fejl ved forkert usernname eller password
                         	alert.setTitle("Error");
                         	alert.setHeaderText("Kort ikke registeret");
                         	alert.setContentText("Ugyldigt kort nummer");
@@ -54,7 +59,7 @@ public class FXML_Signed_Controller implements Initializable {
         				else
         				{
         					System.out.println(CardNumber);
-        					Alert alert = new Alert(Alert.AlertType.CONFIRMATION); 
+        					Alert alert = new Alert(Alert.AlertType.CONFIRMATION);                             //fejl ved forkert usernname eller password
                         	alert.setTitle("RunnerRunner");
                         	alert.setContentText("Nyt kort tilknyttet bruger");
                         	alert.showAndWait();
@@ -72,12 +77,12 @@ public class FXML_Signed_Controller implements Initializable {
 
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
-        Scene scene = new Scene(root);                                                   
-        stage.setScene(scene);	
+        Scene scene = new Scene(root);                                                      //instance af den givne side
+        stage.setScene(scene);			 //aktivere scenen
         stage.centerOnScreen();
-        stage.setResizable(true);
-		stage.setFullScreen(true);
-        stage.show();                                                          
+        stage.setMaximized(true);
+        stage.setResizable(true);                                                          //ændre størrels på vindue false
+        stage.show();                                                                       //hvis siden
 
     }
 

@@ -28,10 +28,10 @@ import javafx.stage.Stage;
 public class FXML_Start_Controller implements Initializable {
 
     @FXML // fx:id="button"
-    private Button btnSigned; //  injected by FXMLLoade
+    private Button btnSigned; 
 
     @FXML // fx:id="btnLogin"
-    private Button btnUnsigned; // Value injected by FXMLLoader
+    private Button btnUnsigned; 
 
 
 
@@ -47,7 +47,6 @@ public class FXML_Start_Controller implements Initializable {
         		changePage(btnUnsigned,"FXML_Unsigned.fxml");
         	}
     }
-    //funktionen der håndterer sideskiftet
     private void changePage(Button btn, String dokument) throws IOException
     {
         Stage stage;
@@ -55,13 +54,11 @@ public class FXML_Start_Controller implements Initializable {
 
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
-        Scene scene = new Scene(root);                                                      //instance af den givne side
-        stage.setScene(scene);                                                              //aktivere scenen
-        stage.centerOnScreen();   
-        stage.setMaximized(true); //centreret billede
-        stage.setResizable(false);                                                          //ændre størrels på vindue false
-        stage.show();                                                                       //hvis siden
-
+        Scene scene = new Scene(root);                                                      
+        stage.centerOnScreen();
+        stage.setResizable(true);
+		stage.setFullScreen(true);
+        stage.show();                                                                     
     }
 
 
