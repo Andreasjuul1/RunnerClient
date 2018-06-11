@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,38 +25,31 @@ import javafx.stage.Stage;
  *
  * @author Andreas
  */
-public class FXML_Main_Controller implements Initializable {
-
-    @FXML // fx:id="btnLogin"
-    private Button btnFinish;
-
-    @FXML // fx:id="button"
-    private Button btnStart;
+public class FXML_Finish_RunEnd_Controller implements Initializable {
 
 
+    @FXML
+    private Button btnOK;
 
 
-    private void changePage(Button btn, String dokument) throws IOException {
+    private void changePage(Button btn, String dokument) throws IOException
+    {
         Stage stage;
         Parent root;
 
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.show();
+		stage.setMaximized(true);
+		stage.setScene(scene);
 
+		stage.show();
     }
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-        if (event.getSource() == btnStart)
+        if (event.getSource() == btnOK)
             {
-                changePage(btnStart,"FXML_Start_Scan.fxml");
-            }
-        else if (event.getSource() == btnFinish)
-        	{
-        		changePage(btnFinish,"FXML_Finish_Scan.fxml");
+        		changePage(btnOK,"FXML_Finish_Scan.fxml");
         	}
     }
 

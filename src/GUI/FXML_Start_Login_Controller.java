@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,38 +25,43 @@ import javafx.stage.Stage;
  *
  * @author Andreas
  */
-public class FXML_Main_Controller implements Initializable {
+public class FXML_Start_Login_Controller implements Initializable {
 
-    @FXML // fx:id="btnLogin"
-    private Button btnFinish;
+    @FXML
+    private Button btnCancel;
 
-    @FXML // fx:id="button"
-    private Button btnStart;
+    @FXML
+    private Button btnLogin;
+
+    @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private TextField txtUsername;
 
 
-
-
-    private void changePage(Button btn, String dokument) throws IOException {
+    private void changePage(Button btn, String dokument) throws IOException
+    {
         Stage stage;
         Parent root;
 
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
         Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.show();
+		stage.setMaximized(true);
+		stage.setScene(scene);
 
+		stage.show();
     }
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-        if (event.getSource() == btnStart)
+        if (event.getSource() == btnLogin)
             {
-                changePage(btnStart,"FXML_Start_Scan.fxml");
+                changePage(btnLogin,"FXML_Start_Scan.fxml");
             }
-        else if (event.getSource() == btnFinish)
+        else if (event.getSource() == btnCancel)
         	{
-        		changePage(btnFinish,"FXML_Finish_Scan.fxml");
+        		changePage(btnCancel,"FXML_Start_Scan");
         	}
     }
 
