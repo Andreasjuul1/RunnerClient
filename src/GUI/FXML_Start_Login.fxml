@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Start_Controller">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styling.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Start_Login_Controller">
     <children>
       <GridPane layoutX="709.0" layoutY="353.0" prefHeight="496.0" prefWidth="542.0">
         <columnConstraints>
@@ -46,10 +46,15 @@
             </Text>
          </children>
       </GridPane>
-      <Text layoutX="842.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ukendt Kort" wrappingWidth="526.13671875">
+      <Text layoutX="785.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ukendt Kort" wrappingWidth="390.13671875">
          <font>
             <Font size="72.0" />
          </font>
       </Text>
+      <Button fx:id="btnCancel" layoutX="92.0" layoutY="947.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="152.0" text="Cancel">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

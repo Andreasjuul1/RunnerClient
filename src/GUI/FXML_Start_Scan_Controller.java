@@ -24,44 +24,13 @@ import javafx.scene.control.Alert;
  *
  * @author Andreas Juul Rasmussen
  */
-public class FXML_Signed_Controller implements Initializable {
-
-    @FXML // fx:id="txtPassword"
-    private PasswordField txtCardNumber; 
+public class FXML_Start_Scan_Controller implements Initializable {
 
     @FXML // fx:id="btnAnnuler"
-    private Button btnCancel; 
+    private Button btnCancel;
 
-
-    @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
-        if (event.getSource() == btnCancel)
-            {
-                changePage(btnCancel,"FXML_Start.fxml");
-            }
-        else if (event.getSource()== txtCardNumber)
-
-        	{
-        		String CardNumber = txtCardNumber.getText();
-        				if(CardNumber.equals(null)){
-
-        					Alert alert = new Alert(Alert.AlertType.ERROR);                      
-                        	alert.setTitle("Error");
-                        	alert.setHeaderText("Kort ikke registeret");
-                        	alert.setContentText("Ugyldigt kort nummer");
-                        	alert.showAndWait();
-        				}
-        				else
-        				{
-        					System.out.println(CardNumber);
-        					Alert alert = new Alert(Alert.AlertType.CONFIRMATION); 
-                        	alert.setTitle("RunnerRunner");
-                        	alert.setContentText("Nyt kort tilknyttet bruger");
-                        	alert.showAndWait();
-        					changePage(btnCancel,"FXML_Signed.fxml");
-        				}
-        	}
-    }
+    @FXML // fx:id="txtPassword"
+    private PasswordField txtCardNumber;
 
 
     //funktionen der håndterer sideskiftet
@@ -72,13 +41,47 @@ public class FXML_Signed_Controller implements Initializable {
 
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
-        Scene scene = new Scene(root);                                                   
-        stage.setScene(scene);	
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(true);
-		stage.setFullScreen(true);
-        stage.show();                                                          
+		stage.setMaximized(true);
+        stage.show();
 
+    }
+
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
+        if (event.getSource() == btnCancel)
+            {
+                changePage(btnCancel,"FXML_Main.fxml");
+            }
+        else if (event.getSource()== txtCardNumber)
+
+        	{
+        		String CardNumber = txtCardNumber.getText();
+        				if(CardNumber.equals("1")){
+
+        					System.out.println("Skal tjekke i databasen om kortet er knyttet til en bruger");
+        					Alert alert = new Alert(Alert.AlertType.ERROR);
+                        	alert.setTitle("Error");
+                        	alert.setHeaderText("Kort ikke registeret");
+                        	alert.setContentText("Ugyldigt kort nummer");
+                        	alert.showAndWait();
+                        	changePage(btnCancel, "FXML_Start_Signup.fxml");
+        				}
+        				else
+        				{
+        					System.out.println(CardNumber);
+        					Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        	alert.setTitle("RunnerRunner");
+                        	alert.setContentText("Nyt kort tilknyttet bruger");
+                        	alert.showAndWait();
+                        	System.out.println("Skal tjekke i databasen om kortet er knyttet til en bruger");
+        					changePage(btnCancel,"FXML_Start_Run.fxml");
+        				}
+        	}
     }
 
 
