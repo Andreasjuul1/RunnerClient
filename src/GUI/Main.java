@@ -16,11 +16,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("FXML_Main.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("FXML_Login.fxml"));
 			Scene scene = new Scene(root, java.awt.Toolkit.getDefaultToolkit().getScreenSize().width,
 		            java.awt.Toolkit.getDefaultToolkit().getScreenSize().height);
 
-			scene.getStylesheets().add(getClass().getResource("FXML_Main.fxml").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("FXML_Login.fxml").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("RunnerRunner");
 			primaryStage.centerOnScreen();

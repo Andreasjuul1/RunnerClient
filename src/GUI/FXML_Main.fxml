@@ -7,7 +7,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../../bin/GUI/styling.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Main_Controller">
     <children>
-       	<Button fx:id="btnStart" layoutX="600.0" layoutY="475.0" onAction="#handleButtonAction" onMouseClicked="#handleButtonAction" prefHeight="150.0" prefWidth="360.0" text="Start terminal">
+       	<Button fx:id="btnStart" layoutX="594.0" layoutY="475.0" onAction="#handleButtonAction" onMouseClicked="#handleButtonAction" prefHeight="150.0" prefWidth="365.0" text="Start terminal">
         			 <font>
            				 <Font size="36.0" />
          					</font></Button>
@@ -16,7 +16,7 @@
             							<Font name="System Bold Italic" size="64.0" />
        										</font>
      											</Text>
-     												<Button fx:id="btnFinish" layoutX="1000.0" layoutY="475.0" onAction="#handleButtonAction" onMouseClicked="#handleButtonAction" prefHeight="150.0" prefWidth="360.0" text="Slut terminal">
+     												<Button fx:id="btnFinish" layoutX="1000.0" layoutY="475.0" onAction="#handleButtonAction" onMouseClicked="#handleButtonAction" prefHeight="150.0" prefWidth="365.0" text="Slut terminal">
         												<font>
           		<Font size="36.0" />
       		</font>

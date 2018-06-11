@@ -26,16 +26,13 @@ import javafx.stage.Stage;
 public class FXML_Login_Controller implements Initializable {
 
     @FXML
-    private Button btnCancel;
-
-    @FXML
-    private Button btnLogin;
+    private TextField txtUsername;
 
     @FXML
     private PasswordField txtPassword;
 
     @FXML
-    private TextField txtUsername;
+    private Button btnLogin;
 
 
     private void changePage(Button btn, String dokument) throws IOException
@@ -55,12 +52,8 @@ public class FXML_Login_Controller implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         if (event.getSource() == btnLogin)
             {
-                changePage(btnLogin,"FXML_Start_Scan.fxml");
+                changePage(btnLogin,"FXML_Main.fxml");
             }
-        else if (event.getSource() == btnCancel)
-        	{
-        		changePage(btnCancel,"FXML_Start_Scan");
-        	}
     }
 
 
