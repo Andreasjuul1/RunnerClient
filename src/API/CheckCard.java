@@ -1,51 +1,50 @@
 package API;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import API.TokenStorage;
+import javax.net.ssl.HttpsURLConnection;
+
+import org.json.simple.JSONObject;
+import org.omg.CORBA.RepositoryIdHelper;
 
 public class CheckCard {
 
-	static String URL = "http://runnerrunner.herokuapp.com";
-	// http://localhost:8080/RESTfulExample/json/product/get
-	public static void main(String[] args) {
+	public CheckCard() {
 
-	  try {
+	}
 
-		URL url = new URL(URL+"/rest/card?");
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("PUT");
-		conn.setRequestProperty("Autorization", "21212121");
+	public Boolean getCard(String cardnumber) throws IOException {
 
-		if (conn.getResponseCode() != 200) {
-			throw new RuntimeException("Failed : HTTP error code : "
-					+ conn.getResponseCode());
+		URL url = new URL("https://runnerrunner.herokuapp.com/rest/card?cardnumber="+cardnumber);
+
+		HttpsURLConnection httpConnection = (HttpsURLConnection) url.openConnection();
+
+		// URL and parameters for the connection, This particulary returns the
+		// information passed
+		httpConnection.setDoOutput(true);
+		httpConnection.setRequestMethod("POST");
+		httpConnection.setRequestProperty("Content-Type", "application/json");
+		httpConnection.setRequestProperty("Accept", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+
+		// Writes the JSON parsed as string to the connection
+		DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
+		Integer responseCode = httpConnection.getResponseCode();
+
+		System.out.println("Response code is: " + responseCode);
+		BufferedReader bufferedReader;
+
+		// Creates a reader buffer
+		if (responseCode == 200) {
+			bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
+		} else {
+			return false;
 		}
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(
-			(conn.getInputStream())));
-
-		String output;
-		System.out.println("Output from Server .... \n");
-		while ((output = br.readLine()) != null) {
-			System.out.println(output);
-		}
-
-		conn.disconnect();
-
-	  } catch (MalformedURLException e) {
-
-		e.printStackTrace();
-
-	  } catch (IOException e) {
-
-		e.printStackTrace();
-
-	  }
-
+		httpConnection.disconnect();
+		return true;
 	}
 
 }

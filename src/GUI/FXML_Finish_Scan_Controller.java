@@ -38,8 +38,7 @@ public class FXML_Finish_Scan_Controller implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setResizable(true);
-		stage.setMaximized(true);
+        stage.setMaximized(true);
         stage.show();
 
     }
@@ -63,7 +62,7 @@ public class FXML_Finish_Scan_Controller implements Initializable {
                         	alert.setHeaderText("Kort allerede registeret");
                         	alert.setContentText("Goddag");
                         	alert.showAndWait();
-                        	changePage(btnCancel, "FXML_Finish_RunEnd.fxml");
+                        	changePage(btnCancel, "FXML_Finish_Signup.fxml");
         				}
         				else
         				{

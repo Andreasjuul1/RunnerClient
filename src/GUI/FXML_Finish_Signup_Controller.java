@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -27,22 +28,26 @@ import javafx.stage.Stage;
 public class FXML_Finish_Signup_Controller implements Initializable {
 
     @FXML
-    private Button btnCancel;
-
-    @FXML
-    private Button btnRegister;
-
-    @FXML
-    private TextField txtEmail;
+    private TextField txtUsername;
 
     @FXML
     private PasswordField txtPassword;
 
     @FXML
-    private TextField txtStudyID;
+    private Button btnRegister;
 
     @FXML
-    private TextField txtUsername;
+    private TextField txtName;
+
+    @FXML
+    private TextField txtEmail;
+
+    @FXML
+    private TextField txtLastName;
+
+    @FXML
+    private Button btnCancel;
+
 
     private void changePage(Button btn, String dokument) throws IOException
     {
@@ -52,7 +57,7 @@ public class FXML_Finish_Signup_Controller implements Initializable {
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
         Scene scene = new Scene(root);
-		stage.setMaximized(true);
+        stage.setMaximized(true);
 		stage.setScene(scene);
 
 		stage.show();
@@ -61,7 +66,7 @@ public class FXML_Finish_Signup_Controller implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         if (event.getSource() == btnRegister)
             {
-        	if (txtUsername.getText().isEmpty() == true || txtEmail.getText().isEmpty() == true || txtPassword.getText().isEmpty() == true || txtStudyID.getText().isEmpty())
+        	if (txtUsername.getText().isEmpty() == true || txtName.getText().isEmpty() == true || txtPassword.getText().isEmpty() == true || txtLastName.getText().isEmpty() == true || txtEmail.getText().isEmpty())
         	{
         		System.out.println("Fejl i indtastning af oplysninger");
 				Alert alert = new Alert(Alert.AlertType.ERROR);

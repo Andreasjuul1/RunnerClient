@@ -8,6 +8,8 @@ package GUI;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import API.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,23 +28,30 @@ import javafx.stage.Stage;
  */
 public class FXML_Start_Signup_Controller implements Initializable {
 
-    @FXML
-    private Button btnCancel;
 
     @FXML
-    private Button btnRegister;
+    private TextField txtName;
 
     @FXML
-    private TextField txtEmail;
+    private TextField txtMiddleName;
+
+    @FXML
+    private TextField txtLastName;
+
+    @FXML
+    private TextField txtUsername;
 
     @FXML
     private PasswordField txtPassword;
 
     @FXML
-    private TextField txtStudyID;
+    private TextField txtEmail;
 
     @FXML
-    private TextField txtUsername;
+    private Button btnRegister;
+
+    @FXML
+    private Button btnCancel;
 
     private void changePage(Button btn, String dokument) throws IOException
     {
@@ -52,32 +61,38 @@ public class FXML_Start_Signup_Controller implements Initializable {
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
         Scene scene = new Scene(root);
-		stage.setMaximized(true);
+        stage.setMaximized(true);
 		stage.setScene(scene);
 
 		stage.show();
     }
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
+    private void handleButtonAction(ActionEvent event) throws IOException{
         if (event.getSource() == btnRegister)
             {
-        	if (txtUsername.getText().isEmpty() == true && txtEmail.getText().isEmpty() == true && txtPassword.getText().isEmpty() == true && txtStudyID.getText().isEmpty())
-        	{
-        		System.out.println("Fejl i indtastning af oplysninger");
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-            	alert.setTitle("Error");
-            	alert.setHeaderText("Manglende Oplysninger");
-            	alert.setContentText("Udfyld alle felter for fuldendt registering");
-            	alert.showAndWait();
+        		Boolean valid = false;
 
-        	}
-        	else
-                changePage(btnRegister,"FXML_Start_Run.fxml");
+        		try {
+        			CreateUser CU = new CreateUser();
+					valid = CU.CreateUser(txtUsername.getText(),txtName.getText(), txtMiddleName.getText(), txtLastName.getText(),txtEmail.getText(),txtPassword.getText());
+
+					if(valid == true){
+						changePage(btnRegister,"FXML_start_Run.fxml");
+					}
+
+				} catch (IOException e) {
+				{
+					if(event.getSource() == btnCancel){
+						changePage(btnCancel, "FXML_Start_Scan.fxml");
+					}
+				}
+				}
+
+
+
+
+
             }
-        else if (event.getSource() == btnCancel)
-        	{
-        		changePage(btnCancel,"FXML_Start_Scan.fxml");
-        	}
     }
 
 

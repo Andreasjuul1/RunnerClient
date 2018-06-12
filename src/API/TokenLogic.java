@@ -11,24 +11,23 @@ import javax.net.ssl.HttpsURLConnection;
 import org.json.simple.JSONObject;
 import org.omg.CORBA.RepositoryIdHelper;
 
-public class CreateUser{
+public class TokenLogic {
 
-	public CreateUser() {
+	public TokenLogic() {
 
 	}
 
-	public boolean CreateUser(String username,String firstName, String middleName, String lastName, String email, String password) throws IOException {
+	public Boolean getToken(String login, String password, String id) throws IOException {
 
+		String token = null;
 
-		URL url = new URL("https://runnerrunner.herokuapp.com/rest/user");
+		URL url = new URL("https://runnerrunner.h"
+				+ "erokuapp.com/rest/terminal/token");
 
 		JSONObject data = new JSONObject();
 
-		data.put("Username", username);
-		data.put("firstName", firstName);
-		data.put("middleName", middleName);
-		data.put("lastName", lastName);
-		data.put("email", email);
+		data.put("id", id);
+		data.put("login", login);
 		data.put("password", password);
 
 		HttpsURLConnection httpConnection = (HttpsURLConnection) url.openConnection();
@@ -39,7 +38,6 @@ public class CreateUser{
 		httpConnection.setRequestMethod("POST");
 		httpConnection.setRequestProperty("Content-Type", "application/json");
 		httpConnection.setRequestProperty("Accept", "application/json");
-		httpConnection.setRequestProperty("Authorization", "Bearer "+ TokenStorage.getInstance().getTerminalToken());
 
 		// Writes the JSON parsed as string to the connection
 		DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
@@ -63,6 +61,15 @@ public class CreateUser{
 			content.append(line).append("\n");
 		}
 		bufferedReader.close();
+
+		token = content.toString();
+
+		if (token.contains("token")) {
+			token = token.replace("{\"token\":\"", "");
+			token = token.replace("\"}\n", "");
+
+			API.TokenStorage.getInstance().setTerminalToken(token);
+		}
 
 		return true;
 	}

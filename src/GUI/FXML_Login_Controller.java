@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import java.io.IOException;
@@ -18,14 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import API.*;
 
-/**
- *
- * @author Andreas
- */
 public class FXML_Login_Controller implements Initializable {
 
-    @FXML
+
+	@FXML
     private TextField txtUsername;
 
     @FXML
@@ -33,6 +26,9 @@ public class FXML_Login_Controller implements Initializable {
 
     @FXML
     private Button btnLogin;
+
+    @FXML
+    private TextField txtRunID;
 
 
     private void changePage(Button btn, String dokument) throws IOException
@@ -43,16 +39,32 @@ public class FXML_Login_Controller implements Initializable {
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
         Scene scene = new Scene(root);
-		stage.setMaximized(true);
+        stage.setMaximized(true);
 		stage.setScene(scene);
-
+;
 		stage.show();
     }
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
+    private void handleButtonAction(ActionEvent event){
         if (event.getSource() == btnLogin)
             {
-                changePage(btnLogin,"FXML_Main.fxml");
+        		Boolean valid = false;
+
+        		try {
+        			TokenLogic tl = new TokenLogic();
+					valid = tl.getToken(txtUsername.getText(), txtPassword.getText(), txtRunID.getText());
+
+					if(valid == true){
+						changePage(btnLogin,"FXML_Main.fxml");
+					}
+				} catch (IOException e1) {
+
+				}
+
+
+
+
+
             }
     }
 

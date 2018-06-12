@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import API.*;
 
 /**
  *
@@ -39,7 +40,7 @@ public class FXML_Start_Scan_Controller implements Initializable {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(true);
-		stage.setMaximized(true);
+        stage.setMaximized(true);
         stage.show();
 
     }
@@ -49,32 +50,45 @@ public class FXML_Start_Scan_Controller implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         if (event.getSource() == btnCancel)
             {
-                changePage(btnCancel,"FXML_Main.fxml");
-            }
+        		changePage(btnCancel,"FXML_Main.fxml");
+        	}
+
         else if (event.getSource()== txtCardNumber)
 
         	{
-        		String CardNumber = txtCardNumber.getText();
-        				if(CardNumber.equals("1")){
+        		Boolean exist = false;
 
-        					System.out.println("Skal tjekke i databasen om kortet er knyttet til en bruger");
-        					Alert alert = new Alert(Alert.AlertType.ERROR);
-                        	alert.setTitle("Error");
-                        	alert.setHeaderText("Kort ikke registeret");
-                        	alert.setContentText("Ugyldigt kort nummer");
-                        	alert.showAndWait();
-                        	changePage(btnCancel, "FXML_Start_Signup.fxml");
-        				}
-        				else
-        				{
-        					System.out.println(CardNumber);
-        					Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        	alert.setTitle("RunnerRunner");
-                        	alert.setContentText("Nyt kort tilknyttet bruger");
-                        	alert.showAndWait();
-                        	System.out.println("Skal tjekke i databasen om kortet er knyttet til en bruger");
-        					changePage(btnCancel,"FXML_Start_Run.fxml");
-        				}
+        		try{
+
+        			CheckCard check = new CheckCard();
+        			exist = check.getCard(txtCardNumber.getText());
+
+        			if(exist == true){
+
+    					System.out.println("Skal tjekke i databasen om kortet er knyttet til en bruger");
+    					Alert alert = new Alert(Alert.AlertType.ERROR);
+                    	alert.setTitle("Error");
+                    	alert.setHeaderText("Kort fines i database");
+                    	alert.setContentText("gyldigt kort nummer");
+                    	alert.showAndWait();
+                    	changePage(btnCancel, "FXML_Start_Run.fxml");
+    				}
+    				else
+    				{
+    					System.out.println(txtCardNumber.getText());
+    					Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    	alert.setTitle("RunnerRunner");
+                    	alert.setContentText("Nyt kort tilknyttet bruger");
+                    	alert.showAndWait();
+                    	System.out.println("Fejl");
+    					changePage(btnCancel,"FXML_Start_Signup.fxml");
+    				}
+
+        		}
+        		catch (Exception e) {
+					// TODO: handle exception
+				}
+
         	}
     }
 

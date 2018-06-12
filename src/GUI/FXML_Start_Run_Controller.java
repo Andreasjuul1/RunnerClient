@@ -52,7 +52,7 @@ public class FXML_Start_Run_Controller implements Initializable {
         stage = (Stage) btn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource(dokument));
         Scene scene = new Scene(root);
-		stage.setMaximized(true);
+        stage.setMaximized(true);
 		stage.setScene(scene);
 
 		stage.show();

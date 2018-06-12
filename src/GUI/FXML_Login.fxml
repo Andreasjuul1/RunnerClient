@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styling.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Login_Controller">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styling.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Login_Controller">
     <children>
-      <GridPane layoutX="640.0" layoutY="391.0" prefHeight="296.0" prefWidth="640.0">
+      <GridPane layoutX="640.0" layoutY="391.0" prefHeight="410.0" prefWidth="640.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -22,11 +22,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="txtUsername" maxWidth="564.0" minHeight="25.0" minWidth="165.0" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" />
-            <PasswordField fx:id="txtPassword" maxWidth="564.0" minHeight="63.0" minWidth="165.0" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" maxHeight="130.0" maxWidth="551.0" minHeight="25.0" minWidth="165.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="122.0" prefWidth="530.0" text="Login" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="txtUsername" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" />
+            <PasswordField fx:id="txtPassword" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="122.0" prefWidth="530.0" text="Login" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="36.0" />
                </font></Button>
@@ -35,6 +36,8 @@
                   <Font size="18.0" />
                </font></Label>
             <Label prefHeight="38.0" prefWidth="270.0" text="Kodeord" GridPane.rowIndex="1" />
+            <Label text="Løbs ID" GridPane.rowIndex="2" />
+            <TextField fx:id="txtRunID" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Text layoutX="640.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RunnerRunner" textAlignment="CENTER" textOrigin="CENTER" underline="true">

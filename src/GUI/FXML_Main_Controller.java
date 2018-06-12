@@ -8,6 +8,8 @@ package GUI;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import API.TokenStorage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,12 +51,16 @@ public class FXML_Main_Controller implements Initializable {
         if (event.getSource() == btnStart)
             {
                 changePage(btnStart,"FXML_Start_Scan.fxml");
+                System.out.println("start scan");
+                System.out.println(TokenStorage.getInstance().getTerminalToken());
             }
         else if (event.getSource() == btnFinish)
         	{
         		changePage(btnFinish,"FXML_Finish_Scan.fxml");
+        		System.out.println("finish scan");
         	}
     }
+
 
 
     @Override
