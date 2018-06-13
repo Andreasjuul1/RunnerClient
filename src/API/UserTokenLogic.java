@@ -7,27 +7,24 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import API.TokenStorage;
 import javax.net.ssl.HttpsURLConnection;
-
 import org.json.simple.JSONObject;
 import org.omg.CORBA.RepositoryIdHelper;
 
-public class TokenLogic {
+public class UserTokenLogic {
 
-	public TokenLogic() {
+	public UserTokenLogic() {
 
 	}
 
-	public Boolean getToken(String login, String password, String id) throws IOException {
+	public Boolean getToken(String username, String password) throws IOException {
 
 		String token = null;
 
-		URL url = new URL("https://runnerrunner.h"
-				+ "erokuapp.com/rest/terminal/token");
+		URL url = new URL("https://runnerrunner.herokuapp.com/rest/token");
 
 		JSONObject data = new JSONObject();
 
-		data.put("id", id);
-		data.put("login", login);
+		data.put("username", username);
 		data.put("password", password);
 
 		HttpsURLConnection httpConnection = (HttpsURLConnection) url.openConnection();
@@ -68,7 +65,7 @@ public class TokenLogic {
 			token = token.replace("{\"token\":\"", "");
 			token = token.replace("\"}\n", "");
 
-			API.TokenStorage.getInstance().setTerminalToken(token);
+			API.TokenStorage.getInstance().setUserToken(token);
 		}
 
 		return true;

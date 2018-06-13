@@ -13,7 +13,6 @@ import API.AttendingRun;
 import API.CardStorage;
 import API.CardToUser;
 import API.RunIDStorage;
-import API.TerminalTokenLogic;
 import API.UserSignup;
 import API.UserTokenLogic;
 import javafx.event.ActionEvent;
@@ -31,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author Andreas
  */
-public class FXML_Start_Login_Controller implements Initializable {
+public class FXML_Finish_Login_Controller implements Initializable {
 
     @FXML
     private Button btnCancel;
@@ -60,7 +59,12 @@ public class FXML_Start_Login_Controller implements Initializable {
 		stage.show();
     }
     @FXML
-    private void handleButtonAction(ActionEvent event){
+    private void handleButtonAction(ActionEvent event) throws IOException{
+    	if(event.getSource() == btnCancel)
+		{
+			changePage(btnCancel, "FXML_Finish_Scan.fxml");
+		}
+
         if (event.getSource() == btnLogin)
             {
         		Boolean valid = false;
@@ -84,12 +88,12 @@ public class FXML_Start_Login_Controller implements Initializable {
 					}
 
 					if(valid && valid2 && valid3 == true){
-						changePage(btnLogin,"FXML_Run.fxml");
+						changePage(btnLogin,"FXML_Finish_Run.fxml");
 					}
 				}
         		catch (IOException e1) {
 
-        	}
+            	}
         }
       }
 

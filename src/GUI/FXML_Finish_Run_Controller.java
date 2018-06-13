@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author Andreas
  */
-public class FXML_Finish_RunEnd_Controller implements Initializable {
+public class FXML_Finish_Run_Controller implements Initializable {
 
 
     @FXML

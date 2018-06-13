@@ -61,24 +61,23 @@ public class FXML_Start_Scan_Controller implements Initializable {
         		Boolean exist = false;
 
         		try{
-
         			CheckCard check = new CheckCard();
         			exist = check.getCard(txtCardNumber.getText());
+
+        			API.CardStorage.getInstance().setCardNumber(txtCardNumber.getText());
 
         			if(exist == true)
         				{
 
-
-    						Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    						alert.setTitle("Error");
-    						alert.setHeaderText("Kort fines i database");
-    						alert.setContentText("gyldigt kort nummer");
-    						alert.showAndWait();
+        					if(!new AttendingRun().userAttending(RunIDStorage.getInstance().getRunID())){
+        						UserSignup us = new UserSignup();
+        						us.addUsertoRun(RunIDStorage.getInstance().getRunID());
+        					}
     						changePage(btnCancel,"FXML_Start_Run.fxml");
     					}
     				else
     					{
-    							changePage(btnCancel, "FXML_Start_Choose.fxml");
+    							changePage(null, "FXML_Start_Choose.fxml");
 
     					}
         			}

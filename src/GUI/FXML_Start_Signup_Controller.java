@@ -72,14 +72,30 @@ public class FXML_Start_Signup_Controller implements Initializable {
         if (event.getSource() == btnRegister)
             {
         		Boolean valid = false;
+        		Boolean valid2 = false;
 
         		try {
         			CreateUser CU = new CreateUser();
 					valid = CU.CreateaUser(txtUsername.getText(),txtName.getText(), txtMiddleName.getText(), txtLastName.getText(),txtEmail.getText(),txtPassword.getText());
-					CardToUser CTU = new CardToUser();
-					CardToUser()
 
-					if(valid == true){
+					if(valid){
+						API.UserTokenLogic ut = new UserTokenLogic();
+						ut.getToken(txtUsername.getText(), txtPassword.getText());
+						UserSignup us = new UserSignup();
+						us.addUsertoRun(RunIDStorage.getInstance().getRunID());
+					} else {
+						//fejl!
+					}
+
+					CardToUser CTU = new CardToUser();
+
+					valid2 = CTU.addCardToUser(CardStorage.getInstance().getCardNumber());
+
+					System.out.println(valid);
+					System.out.println(valid2);
+					System.out.println(CardStorage.getInstance().getCardNumber());
+
+					if(valid && valid2){
 						changePage(btnRegister,"FXML_start_Run.fxml");
 					}
 					else{

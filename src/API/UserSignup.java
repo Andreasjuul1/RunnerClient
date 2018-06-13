@@ -10,22 +10,22 @@ import java.net.URL;
 import API.TokenStorage;
 import org.json.simple.JSONObject;
 
-	public class CardToUser{
+	public class UserSignup{
 
-		public CardToUser() {
+		public UserSignup() {
 
 		}
 
-		public Boolean addCardToUser(String cardnumber) throws IOException {
+		public Boolean addUsertoRun(String runID) throws IOException {
 
 
-			URL url = new URL("https://runnerrunner.herokuapp.com/rest/card?cardnumber="+ CardStorage.getInstance().getCardNumber());
+			URL url = new URL("https://runnerrunner.herokuapp.com/rest/run/runs?run_id="+ runID);
 
 			JSONObject data = new JSONObject();
 
 						try{
 
-			            data.put("cardnumber", cardnumber);
+			            data.put("RunID", runID);
 
 
 			            // URL and parameters for the connection, This particulary returns the information passed

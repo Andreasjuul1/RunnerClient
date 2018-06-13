@@ -51,7 +51,7 @@ public class FXML_Login_Controller implements Initializable {
         		Boolean valid = false;
 
         		try {
-        			TokenLogic tl = new TokenLogic();
+        			TerminalTokenLogic tl = new TerminalTokenLogic();
 					valid = tl.getToken(txtUsername.getText(), txtPassword.getText(), txtRunID.getText());
 
 					if(valid == true){

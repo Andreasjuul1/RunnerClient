@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styling.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Finish_Login_Controller">
+    <children>
+      <GridPane layoutX="709.0" layoutY="353.0" prefHeight="540.0" prefWidth="538.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="546.0909423828125" GridPane.rowIndex="1">
+               <font>
+                  <Font size="48.0" />
+               </font></Text>
+            <TextField fx:id="txtUsername" prefHeight="65.0" prefWidth="100.0" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="542.751220703125" GridPane.rowIndex="3">
+               <font>
+                  <Font size="48.0" />
+               </font></Text>
+            <PasswordField fx:id="txtPassword" prefHeight="65.0" prefWidth="100.0" GridPane.rowIndex="4" />
+            <Button fx:id="btnLogin" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="142.0" prefWidth="540.0" text="Login" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="5">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="543.1702880859375">
+               <font>
+                  <Font name="Arial" size="48.0" />
+               </font>
+            </Text>
+         </children>
+      </GridPane>
+      <Text layoutX="665.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tilføj kort til bruger" wrappingWidth="618.9366455078125">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnCancel" layoutX="92.0" layoutY="900.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="84.0" prefWidth="230.0" text="Cancel">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

@@ -27,22 +27,7 @@ import javafx.stage.Stage;
 public class FXML_Start_Run_Controller implements Initializable {
 
     @FXML
-    private Button btnCancel;
-
-    @FXML
-    private Button btnRegister;
-
-    @FXML
-    private TextField txtEmail;
-
-    @FXML
-    private PasswordField txtPassword;
-
-    @FXML
-    private TextField txtStudyID;
-
-    @FXML
-    private TextField txtUsername;
+    private Button btnOK;
 
     private void changePage(Button btn, String dokument) throws IOException
     {
@@ -59,27 +44,11 @@ public class FXML_Start_Run_Controller implements Initializable {
     }
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-        if (event.getSource() == btnRegister)
+        if (event.getSource() == btnOK)
             {
-        	if (txtUsername.getText().isEmpty() == true && txtEmail.getText().isEmpty() == true && txtPassword.getText().isEmpty() == true && txtStudyID.getText().isEmpty())
-        	{
-        		System.out.println("Fejl i indtastning af oplysninger");
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-            	alert.setTitle("Error");
-            	alert.setHeaderText("Manglende Oplysninger");
-            	alert.setContentText("Udfyld alle felter for fuldendt registering");
-            	alert.showAndWait();
-
-        	}
-        	else
-                changePage(btnRegister,"FXML_Start_Run.fxml");
+        	changePage(btnOK, "FXML_Start_Scan.fxml");
             }
-        else if (event.getSource() == btnCancel)
-        	{
-        		changePage(btnCancel,"FXML_Start_Scan.fxml");
-        	}
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

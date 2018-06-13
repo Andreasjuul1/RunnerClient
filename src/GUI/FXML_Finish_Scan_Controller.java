@@ -3,6 +3,11 @@ package GUI;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import API.AttendingRun;
+import API.CheckCard;
+import API.RunIDStorage;
+import API.UserSignup;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,34 +51,44 @@ public class FXML_Finish_Scan_Controller implements Initializable {
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-        if (event.getSource() == btnCancel)
-            {
-                changePage(btnCancel,"FXML_Main.fxml");
-            }
+    	if(event.getSource() == btnCancel)
+		{
+			changePage(btnCancel, "FXML_Main.fxml");
+		}
+
         else if (event.getSource()== txtCardNumber)
 
         	{
-        		String CardNumber = txtCardNumber.getText();
-        				if(CardNumber.equals("1")){
+        		Boolean exist = false;
 
-        					System.out.println("Kort ligger allerede i databasen");
-        					Alert alert = new Alert(Alert.AlertType.ERROR);
-                        	alert.setTitle("Error");
-                        	alert.setHeaderText("Kort allerede registeret");
-                        	alert.setContentText("Goddag");
-                        	alert.showAndWait();
-                        	changePage(btnCancel, "FXML_Finish_Signup.fxml");
-        				}
-        				else
+        		try{
+        			CheckCard check = new CheckCard();
+        			exist = check.getCard(txtCardNumber.getText());
+
+        			API.CardStorage.getInstance().setCardNumber(txtCardNumber.getText());
+
+        			if(exist == true)
         				{
-        					System.out.println(CardNumber);
-        					Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        	alert.setTitle("RunnerRunner");
-                        	alert.setContentText("Nyt kort, login for at tilknytte bruger");
-                        	alert.showAndWait();
-                        	System.out.println("Skal tjekke i databasen om kortet er knyttet til en bruger");
-        					changePage(btnCancel,"FXML_Finish_Signup.fxml");
+
+        					if(!new AttendingRun().userAttending(RunIDStorage.getInstance().getRunID())){
+        						UserSignup us = new UserSignup();
+        						us.addUsertoRun(RunIDStorage.getInstance().getRunID());
+
+    					}
+        				changePage(btnCancel,"FXML_Finish_Run.fxml");
         				}
+    				else
+    					{
+    						changePage(btnCancel, "FXML_Finish_Login.fxml");
+
+    					}
+        			}
+
+
+        		catch (Exception e) {
+					// TODO: handle exception
+				}
+
         	}
     }
 
