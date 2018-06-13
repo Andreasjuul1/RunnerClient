@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styling.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Start_Login_Controller">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@styling.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Start_Login_Controller">
     <children>
-      <GridPane layoutX="709.0" layoutY="353.0" prefHeight="496.0" prefWidth="542.0">
+      <GridPane layoutX="709.0" layoutY="353.0" prefHeight="540.0" prefWidth="538.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -29,13 +29,13 @@
                <font>
                   <Font size="48.0" />
                </font></Text>
-            <TextField fx:id="txtUsername" maxHeight="54.0" maxWidth="564.0" minHeight="25.0" minWidth="165.0" prefHeight="54.0" prefWidth="542.0" GridPane.rowIndex="2" />
+            <TextField fx:id="txtUsername" prefHeight="65.0" prefWidth="100.0" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="542.751220703125" GridPane.rowIndex="3">
                <font>
                   <Font size="48.0" />
                </font></Text>
-            <PasswordField fx:id="txtPassword" maxHeight="54.0" maxWidth="564.0" minHeight="25.0" minWidth="165.0" prefHeight="54.0" prefWidth="542.0" GridPane.rowIndex="4" />
-            <Button fx:id="btnLogin" alignment="TOP_CENTER" contentDisplay="CENTER" maxHeight="80.0" maxWidth="551.0" minHeight="25.0" minWidth="165.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="80.0" prefWidth="542.0" text="Login" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="5">
+            <PasswordField fx:id="txtPassword" prefHeight="65.0" prefWidth="100.0" GridPane.rowIndex="4" />
+            <Button fx:id="btnLogin" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="142.0" prefWidth="540.0" text="Login" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="5">
                <font>
                   <Font size="36.0" />
                </font></Button>
@@ -46,12 +46,12 @@
             </Text>
          </children>
       </GridPane>
-      <Text layoutX="785.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ukendt Kort" wrappingWidth="390.13671875">
+      <Text layoutX="665.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tilføj kort til bruger" wrappingWidth="618.9366455078125">
          <font>
             <Font size="72.0" />
          </font>
       </Text>
-      <Button fx:id="btnCancel" layoutX="92.0" layoutY="947.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="152.0" text="Cancel">
+      <Button fx:id="btnCancel" layoutX="92.0" layoutY="900.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="230.0" text="Cancel">
          <font>
             <Font size="24.0" />
          </font>

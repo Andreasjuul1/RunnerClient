@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.*;
 
 /**
  *
@@ -74,26 +75,34 @@ public class FXML_Start_Signup_Controller implements Initializable {
 
         		try {
         			CreateUser CU = new CreateUser();
-					valid = CU.CreateUser(txtUsername.getText(),txtName.getText(), txtMiddleName.getText(), txtLastName.getText(),txtEmail.getText(),txtPassword.getText());
+					valid = CU.CreateaUser(txtUsername.getText(),txtName.getText(), txtMiddleName.getText(), txtLastName.getText(),txtEmail.getText(),txtPassword.getText());
+					CardToUser CTU = new CardToUser();
+					CardToUser()
 
 					if(valid == true){
 						changePage(btnRegister,"FXML_start_Run.fxml");
 					}
-
-				} catch (IOException e) {
-				{
-					if(event.getSource() == btnCancel){
-						changePage(btnCancel, "FXML_Start_Scan.fxml");
+					else{
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+                	alert.setTitle("Error");
+                	alert.setHeaderText("Fejl i registering");
+                	alert.setContentText("Forsøg oprettelse igen");
+                	alert.showAndWait();
 					}
-				}
-				}
+
+				} catch (IOException e)
+        			{
+
+        			}
 
 
+			}
+        if(event.getSource() == btnCancel)
+		{
+			changePage(btnCancel, "FXML_Start_Scan.fxml");
+		}
+        }
 
-
-
-            }
-    }
 
 
     @Override

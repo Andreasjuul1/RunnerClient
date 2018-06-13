@@ -27,17 +27,18 @@
          <children>
             <TextField fx:id="txtUsername" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" />
             <PasswordField fx:id="txtPassword" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="122.0" prefWidth="530.0" text="Login" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="36.0" />
-               </font></Button>
+            <TextField fx:id="txtRunID" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label prefHeight="38.0" prefWidth="286.0" text="Brugernavn">
                <font>
                   <Font size="18.0" />
                </font></Label>
             <Label prefHeight="38.0" prefWidth="270.0" text="Kodeord" GridPane.rowIndex="1" />
             <Label text="Løbs ID" GridPane.rowIndex="2" />
-            <TextField fx:id="txtRunID" prefHeight="65.0" prefWidth="320.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="122.0" prefWidth="530.0" text="Login" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
          </children>
       </GridPane>
       <Text layoutX="640.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RunnerRunner" textAlignment="CENTER" textOrigin="CENTER" underline="true">
