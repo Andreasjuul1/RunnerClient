@@ -26,9 +26,9 @@ public class CheckCard {
 		// URL and parameters for the connection, This particulary returns the
 		// information passed
 		httpConnection.setDoOutput(true);
-		httpConnection.setRequestMethod("POST");
+		httpConnection.setRequestMethod("PUT");
 		httpConnection.setRequestProperty("Content-Type", "application/json");
-		httpConnection.setRequestProperty("Accept", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+		httpConnection.setRequestProperty("Authorization", "Bearer "+ TokenStorage.getInstance().getTerminalToken());
 
 		// Writes the JSON parsed as string to the connection
 		DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
@@ -43,7 +43,7 @@ public class CheckCard {
 		} else {
 			return false;
 		}
-		httpConnection.disconnect();
+
 		return true;
 	}
 
