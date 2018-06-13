@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import API.*;
@@ -26,6 +27,7 @@ public class FXML_Start_Scan_Controller implements Initializable {
 
     @FXML // fx:id="txtPassword"
     private PasswordField txtCardNumber;
+
 
 
     //funktionen der håndterer sideskiftet
@@ -63,28 +65,25 @@ public class FXML_Start_Scan_Controller implements Initializable {
         			CheckCard check = new CheckCard();
         			exist = check.getCard(txtCardNumber.getText());
 
-        			if(exist == true){
+        			if(exist == true)
+        				{
 
-    					System.out.println("Skal tjekke i databasen om kortet er knyttet til en bruger");
-    					Alert alert = new Alert(Alert.AlertType.ERROR);
-                    	alert.setTitle("Error");
-                    	alert.setHeaderText("Kort fines i database");
-                    	alert.setContentText("gyldigt kort nummer");
-                    	alert.showAndWait();
-                    	changePage(btnCancel, "FXML_Start_Run.fxml");
-    				}
+
+    						Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    						alert.setTitle("Error");
+    						alert.setHeaderText("Kort fines i database");
+    						alert.setContentText("gyldigt kort nummer");
+    						alert.showAndWait();
+    						changePage(btnCancel,"FXML_Start_Run.fxml");
+    					}
     				else
-    				{
-    					System.out.println(txtCardNumber.getText());
-    					Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    	alert.setTitle("RunnerRunner");
-                    	alert.setContentText("Nyt kort tilknyttet bruger");
-                    	alert.showAndWait();
-                    	System.out.println("Fejl");
-    					changePage(btnCancel,"FXML_Start_Signup.fxml");
-    				}
+    					{
+    							changePage(btnCancel, "FXML_Start_Choose.fxml");
 
-        		}
+    					}
+        			}
+
+
         		catch (Exception e) {
 					// TODO: handle exception
 				}
