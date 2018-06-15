@@ -49,7 +49,7 @@ public class CreateUser{
 		            DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
 		            wr.write(data.toString().getBytes());
 		            Integer responseCode = httpConnection.getResponseCode();
-		            System.out.println("Response code is: " + responseCode + " bruger tilføjet");
+		            System.out.println("Response code is: " + responseCode + " Create User ");
 		            BufferedReader bufferedReader;
 
 		            // Creates a reader buffer

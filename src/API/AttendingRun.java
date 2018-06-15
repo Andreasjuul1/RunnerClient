@@ -18,54 +18,43 @@ public class AttendingRun {
 
 	}
 
-	public Boolean userAttending(String runID) throws IOException {
+	public Boolean userAttending(String runID, String cardNumber) throws IOException
+	{
+		URL obj = new URL("https://runnerrunner.herokuapp.com/rest/run/attend?run_id=" + runID + "&cardnumber=" + cardNumber);
 
-					URL url = new URL("https://runnerrunner.herokuapp.com/rest/run/attend?run_id="+ runID);
-
-					JSONObject data = new JSONObject();
-
-								try{
-
-					            data.put("RunID", runID);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
 
-					            // URL and parameters for the connection, This particulary returns the information passed
-					            HttpURLConnection httpConnection  = (HttpURLConnection) url.openConnection();
-					            httpConnection.setDoOutput(true);
-					            httpConnection.setRequestMethod("GET");
-					            httpConnection.setRequestProperty("Content-Type", "application/json");
-					            httpConnection.setRequestProperty("Authorization", "Bearer " + API.TokenStorage.getInstance().getUserToken());
+        // Setting request method
+        con.setRequestMethod("GET");
 
+        // setting authorizationtoken header
+        con.setRequestProperty("Authorization", "Bearer " + TokenStorage.getInstance());
+        final String USER_AGENT = "Mozilla/5.0";
+        // setting user agent
+        con.setRequestProperty("User-Agent", USER_AGENT);
 
-					            // Writes the JSON parsed as string to the connection
-					            DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
-					            wr.write(data.toString().getBytes());
-					            Integer responseCode = httpConnection.getResponseCode();
-					            System.out.println("Response code is: " + responseCode);
-					            BufferedReader bufferedReader;
+        int responseCode = con.getResponseCode();
 
-					            // Creates a reader buffer
-					            if (responseCode > 199 && responseCode < 300) {
-					                bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
-					            } else {
-					                bufferedReader = new BufferedReader(new InputStreamReader(httpConnection.getErrorStream()));
-					                return false;
-					            }
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-					            // To receive the response
-					            StringBuilder content = new StringBuilder();
-					            String line;
-					            while ((line = bufferedReader.readLine()) != null) {
-					                content.append(line).append("\n");
-					            }
-					            bufferedReader.close();
-								}
-								catch (Exception e)
-									{
-										System.out.println("Error Message");
-										System.out.println(e.getClass().getSimpleName());
-										System.out.println(e.getMessage());
-									}
-								return true;
-							}
-						}
+        String inputLine;
+
+        StringBuffer response = new StringBuffer();
+
+        while((inputLine = in.readLine()) != null)
+        {
+            response.append(inputLine);
+        }
+
+        in.close();
+
+        System.out.println(responseCode);
+
+        if(responseCode == 200)
+        {
+            return true;
+        }
+        return false;
+	}
+}

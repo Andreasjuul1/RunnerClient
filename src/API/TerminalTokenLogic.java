@@ -5,11 +5,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import API.TokenStorage;
 import javax.net.ssl.HttpsURLConnection;
-
 import org.json.simple.JSONObject;
-import org.omg.CORBA.RepositoryIdHelper;
+//import org.omg.CORBA.RepositoryIdHelper;
 
 public class TerminalTokenLogic {
 
@@ -44,7 +42,7 @@ public class TerminalTokenLogic {
 		wr.write(data.toString().getBytes());
 		Integer responseCode = httpConnection.getResponseCode();
 
-		System.out.println("Response code is: " + responseCode);
+		System.out.println("Response code is: " + responseCode +" Terminal Token Logic");
 		BufferedReader bufferedReader;
 
 		// Creates a reader buffer

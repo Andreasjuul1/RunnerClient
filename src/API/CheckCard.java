@@ -34,7 +34,7 @@ public class CheckCard {
 		DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
 		Integer responseCode = httpConnection.getResponseCode();
 
-		System.out.println("Response code is: " + responseCode);
+		System.out.println("Response code is: " + responseCode + " Check Kort");
 		BufferedReader bufferedReader;
 
 		// Creates a reader buffer

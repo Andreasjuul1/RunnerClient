@@ -25,22 +25,20 @@ import org.json.simple.JSONObject;
 
 						try{
 
-			            data.put("RunID", runID);
-
-
 			            // URL and parameters for the connection, This particulary returns the information passed
 			            HttpURLConnection httpConnection  = (HttpURLConnection) url.openConnection();
 			            httpConnection.setDoOutput(true);
 			            httpConnection.setRequestMethod("POST");
 			            httpConnection.setRequestProperty("Content-Type", "application/json");
 			            httpConnection.setRequestProperty("Authorization", "Bearer " + API.TokenStorage.getInstance().getUserToken());
+			            System.out.println("token: " + API.TokenStorage.getInstance().getUserToken());
 
 
 			            // Writes the JSON parsed as string to the connection
 			            DataOutputStream wr = new DataOutputStream(httpConnection.getOutputStream());
 			            wr.write(data.toString().getBytes());
 			            Integer responseCode = httpConnection.getResponseCode();
-			            System.out.println("Response code is: " + responseCode + " bruger tilføjet");
+			            System.out.println("Response code is: " + responseCode + " UserSignup");
 			            BufferedReader bufferedReader;
 
 			            // Creates a reader buffer

@@ -41,7 +41,7 @@ public class UserTokenLogic {
 		wr.write(data.toString().getBytes());
 		Integer responseCode = httpConnection.getResponseCode();
 
-		System.out.println("Response code is: " + responseCode);
+		System.out.println("Response code is: " + responseCode + " Bruger token");
 		BufferedReader bufferedReader;
 
 		// Creates a reader buffer

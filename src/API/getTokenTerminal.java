@@ -21,11 +21,7 @@ public class getTokenTerminal{
 	}
 
 	public static void main(String[] args) throws IOException {
-		System.out.println("lala");
-
-		String id = "23";
-		String login = "dtu123";
-		String password = "123456";
+	
 		String token = null;
 
 
@@ -35,9 +31,6 @@ public class getTokenTerminal{
 
 		JSONObject data = new JSONObject();
 
-		 data.put("id", id);
-         data.put("login", login);
-         data.put("password", password);
 
 		HttpsURLConnection httpConnection  = (HttpsURLConnection) url.openConnection();
 
@@ -56,7 +49,7 @@ public class getTokenTerminal{
         wr.write(data.toString().getBytes());
         Integer responseCode = httpConnection.getResponseCode();
 
-        System.out.println("Response code is: " + responseCode );
+        System.out.println("Response code is: " + responseCode + " Get Token to terminal" );
         BufferedReader bufferedReader;
 
         // Creates a reader buffer

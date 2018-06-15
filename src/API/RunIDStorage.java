@@ -9,12 +9,14 @@ public class RunIDStorage {
 
     }
 
-    public String getRunID() {
+
+	public String getRunID() {
 		return RunID;
 	}
 
-	public void setCardNumber(String CardNumber) {
-		this.RunID = RunID;
+
+	public void setRunID(String runID) {
+		RunID = runID;
 	}
 
 
