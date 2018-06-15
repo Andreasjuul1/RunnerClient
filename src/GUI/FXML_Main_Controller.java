@@ -52,7 +52,6 @@ public class FXML_Main_Controller implements Initializable {
             {
                 changePage(btnStart,"FXML_Start_Scan.fxml");
                 System.out.println("start scan");
-                System.out.println(TokenStorage.getInstance().getTerminalToken());
             }
         else if (event.getSource() == btnFinish)
         	{

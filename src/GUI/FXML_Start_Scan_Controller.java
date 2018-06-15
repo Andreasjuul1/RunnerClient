@@ -65,19 +65,23 @@ public class FXML_Start_Scan_Controller implements Initializable {
         			exist = check.getCard(txtCardNumber.getText());
 
         			API.CardStorage.getInstance().setCardNumber(txtCardNumber.getText());
-
+        			System.out.println("findes kortet " + exist);
         			if(exist == true)
         				{
+        					Boolean att = new AttendingRun().userAttending(RunIDStorage.getInstance().getRunID(), CardStorage.getInstance().getCardNumber());
 
-        					if(!new AttendingRun().userAttending(RunIDStorage.getInstance().getRunID())){
-        						UserSignup us = new UserSignup();
-        						us.addUsertoRun(RunIDStorage.getInstance().getRunID());
+        					System.out.println("CardStorage:   " + CardStorage.getInstance().getCardNumber());
+        					System.out.println("RunIDStorage:   " + RunIDStorage.getInstance().getRunID());
+
+        					if(!att){
+        						System.out.println("Bruger ikke tilmeldt løbet");
+        						changePage(btnCancel, "FXML_Start_Login.fxml");
         					}
-    						changePage(btnCancel,"FXML_Start_Run.fxml");
     					}
     				else
     					{
-    							changePage(null, "FXML_Start_Choose.fxml");
+    						changePage(btnCancel, "FXML_Start_Choose.fxml");
+    						System.out.println("Vælg bruger type, på ukendt kort");
 
     					}
         			}

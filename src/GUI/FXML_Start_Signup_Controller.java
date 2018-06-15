@@ -21,7 +21,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.control.*;
 
 /**
  *
@@ -78,22 +77,13 @@ public class FXML_Start_Signup_Controller implements Initializable {
         			CreateUser CU = new CreateUser();
 					valid = CU.CreateaUser(txtUsername.getText(),txtName.getText(), txtMiddleName.getText(), txtLastName.getText(),txtEmail.getText(),txtPassword.getText());
 
-					if(valid){
-						API.UserTokenLogic ut = new UserTokenLogic();
-						ut.getToken(txtUsername.getText(), txtPassword.getText());
-						UserSignup us = new UserSignup();
-						us.addUsertoRun(RunIDStorage.getInstance().getRunID());
-					} else {
-						//fejl!
-					}
+					API.UserTokenLogic ut = new UserTokenLogic();
+					ut.getToken(txtUsername.getText(), txtPassword.getText());
 
 					CardToUser CTU = new CardToUser();
-
 					valid2 = CTU.addCardToUser(CardStorage.getInstance().getCardNumber());
 
-					System.out.println(valid);
-					System.out.println(valid2);
-					System.out.println(CardStorage.getInstance().getCardNumber());
+					Boolean signedup = new UserSignup().addUsertoRun(RunIDStorage.getInstance().getRunID());
 
 					if(valid && valid2){
 						changePage(btnRegister,"FXML_start_Run.fxml");

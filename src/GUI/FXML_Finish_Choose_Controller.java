@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import API.AttendingRun;
+import API.CardStorage;
+import API.RunIDStorage;
 import API.TokenStorage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,13 +21,13 @@ import javafx.stage.Stage;
  *
  * @author Andreas
  */
-public class FXML_Start_Choose_Controller implements Initializable {
+public class FXML_Finish_Choose_Controller implements Initializable {
 
     @FXML // fx:id="btnLogin"
     private Button btnLogin;
 
     @FXML // fx:id="button"
-    private Button btnCreateUser;
+    private Button btnNoUser;
 
 
 
@@ -50,13 +48,16 @@ public class FXML_Start_Choose_Controller implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         if (event.getSource() == btnLogin)
             {
-                changePage(btnLogin,"FXML_Start_Login.fxml");
-                System.out.println("Login, tilføj kort til bruger");
+        		if (!new AttendingRun().userAttending(RunIDStorage.getInstance().getRunID(),CardStorage.getInstance().getCardNumber()))
+        		{
+				changePage(btnLogin, "FXML_Finish_Login.fxml");
+        		}
+        	changePage(btnLogin, "FXML_Finish_Login");
             }
-        else if (event.getSource() == btnCreateUser)
+        else if (event.getSource() == btnNoUser)
         	{
-        		changePage(btnCreateUser,"FXML_Start_Signup.fxml");
-        		System.out.println("Opret ny bruger");
+        		changePage(btnNoUser,"FXML_Finish_End_NoLogin.fxml");
+        		System.out.println("Ingen Bruger");
         	}
     }
 
