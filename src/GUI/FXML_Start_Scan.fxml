@@ -19,7 +19,7 @@
             <Font size="59.0" />
          </font>
       </Text>
-      <Button fx:id="btnCancel" layoutX="154.0" layoutY="912.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="84.0" prefWidth="285.0" text="Annuller">
+      <Button fx:id="btnCancel" layoutX="154.0" layoutY="912.0" mnemonicParsing="false" onAction="#handleButtonAction" opacity="0.0" prefHeight="84.0" prefWidth="285.0" text="Tilbage">
          <font>
             <Font size="30.0" />
          </font></Button>

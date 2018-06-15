@@ -46,5 +46,10 @@
             <Font name="System Bold Italic" size="96.0" />
          </font>
       </Text>
+      <Text fx:id="txtInfo" fill="RED" layoutX="639.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="650.03125">
+         <font>
+            <Font name="System Bold" size="44.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

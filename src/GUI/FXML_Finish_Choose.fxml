@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0"
+	prefWidth="1920.0" stylesheets="@styling.css" xmlns="http://javafx.com/javafx/9.0.1"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXML_Finish_Choose_Controller">
+	<children>
+		<Button fx:id="btnLogin" layoutX="500.0" layoutY="475.0"
+			onAction="#handleButtonAction" onMouseClicked="#handleButtonAction"
+			prefHeight="150.0" prefWidth="425.0" text="Login ">
+			<font>
+				<Font size="36.0" />
+			</font>
+		</Button>
+		<Text boundsType="logical" layoutX="750.0" layoutY="250.0"
+			strokeType="OUTSIDE" strokeWidth="0.0" text="Runner Runner"
+			textOrigin="CENTER" wrappingWidth="492.0">
+			<font>
+				<Font name="System Bold Italic" size="64.0" />
+			</font>
+		</Text>
+		<Button fx:id="btnNoUser" layoutX="1000.0" layoutY="475.0"
+			onAction="#handleButtonAction" onMouseClicked="#handleButtonAction"
+			prefHeight="150.0" prefWidth="425.0" text="Ingen Bruger">
+			<font>
+				<Font size="36.0" />
+			</font>
+		</Button>
+	</children>
+</AnchorPane>
